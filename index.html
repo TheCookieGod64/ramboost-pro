@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAMBoost Pro™ - Download Extra RAM Gratis!</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a2e;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 25%, #0a0a2e 50%, #2a1a4e 75%, #0a0a2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: rgba(0, 200, 255, 0.3);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid rgba(0, 200, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2em;
+            filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.5));
+        }
+
+        .logo-text {
+            font-size: 1.5em;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00c8ff, #00ff88, #00c8ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShine 3s linear infinite;
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .logo-tm {
+            font-size: 0.5em;
+            vertical-align: super;
+            color: #888;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+
+        nav a:hover { color: #00c8ff; }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #00c8ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #aac;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff4444, #ff8800);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9em;
+            animation: pulse 2s ease infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Stats bar */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 30px 20px;
+            background: rgba(0, 200, 255, 0.05);
+            border-top: 1px solid rgba(0, 200, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 200, 255, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: #00ff88;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Download Section */
+        .downloads {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .downloads h2 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .downloads .subtitle {
+            color: #888;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            border-radius: 20px;
+            padding: 35px 25px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .download-card:hover::before {
+            left: 100%;
+        }
+
+        .download-card:hover {
+            border-color: rgba(0, 200, 255, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 200, 255, 0.15);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .card-speed {
+            color: #00ff88;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .card-desc {
+            color: #999;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .card-price {
+            font-size: 1.5em;
+            color: #00ff88;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card-price .original {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 0.7em;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-basic {
+            background: linear-gradient(135deg, #444, #666);
+        }
+
+        .btn-popular {
+            background: linear-gradient(135deg, #00c8ff, #0088ff);
+            box-shadow: 0 5px 20px rgba(0, 200, 255, 0.3);
+        }
+
+        .btn-pro {
+            background: linear-gradient(135deg, #8800ff, #aa00ff);
+            box-shadow: 0 5px 20px rgba(136, 0, 255, 0.3);
+        }
+
+        .btn-ultimate {
+            background: linear-gradient(135deg, #ff4400, #ff8800);
+            box-shadow: 0 5px 20px rgba(255, 68, 0, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #ff4444;
+            color: #fff;
+            padding: 5px 40px;
+            font-size: 0.75em;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 80px 20px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .step-number {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, #00c8ff, #0088ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .step p {
+            color: #999;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        /* Tech explanation */
+        .tech-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .tech-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .tech-section > p {
+            color: #888;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tech-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .tech-card {
+            background: rgba(0, 200, 255, 0.03);
+            border: 1px solid rgba(0, 200, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: left;
+        }
+
+        .tech-card h3 {
+            color: #00c8ff;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .tech-card p {
+            color: #999;
+            font-size: 0.9em;
+            line-height: 1.7;
+        }
+
+        /* Reviews */
+        .reviews {
+            padding: 80px 20px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .reviews h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .reviews .subtitle {
+            text-align: center;
+            color: #00ff88;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+        }
+
+        .review-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .review-name {
+            font-weight: 700;
+        }
+
+        .review-date {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .review-verified {
+            color: #00ff88;
+            font-size: 0.75em;
+        }
+
+        .stars {
+            color: #ffcc00;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+        }
+
+        .review-text {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        /* Trust badges */
+        .trust {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .trust-badge {
+            padding: 15px 30px;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .trust-badge span {
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 20px;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(0, 200, 255, 0.05);
+        }
+
+        .faq-answer {
+            padding: 0 25px 20px;
+            color: #999;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s;
+            font-size: 0.8em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #555;
+            font-size: 0.85em;
+        }
+
+        footer a {
+            color: #00c8ff;
+            text-decoration: none;
+        }
+
+        /* Download modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #1a1a3e;
+            border: 2px solid rgba(0, 200, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+        }
+
+        .modal h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            color: #999;
+            margin-bottom: 25px;
+        }
+
+        .progress-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            height: 25px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00c8ff, #00ff88);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .modal-status {
+            color: #00ff88;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Download progress animation */
+        .downloading .progress-bar {
+            animation: downloadProgress 5s ease-in-out forwards;
+        }
+
+        @keyframes downloadProgress {
+            0% { width: 0%; }
+            10% { width: 5%; }
+            20% { width: 12%; }
+            30% { width: 25%; }
+            50% { width: 48%; }
+            60% { width: 55%; }
+            70% { width: 70%; }
+            80% { width: 85%; }
+            90% { width: 95%; }
+            100% { width: 100%; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .download-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .stats { gap: 25px; }
+            header { flex-direction: column; gap: 10px; }
+            nav { display: flex; gap: 15px; }
+            nav a { margin-left: 0; }
+        }
+
+        /* Fake cursor sparkle effect */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            width: 5px; height: 5px;
+            background: #00c8ff;
+            border-radius: 50%;
+            animation: sparkleAnim 0.6s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        /* Counter animation */
+        .counter-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 68, 68, 0.15);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85em;
+            margin-bottom: 25px;
+        }
+
+        .live-dot {
+            width: 8px; height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+            animation: livePulse 1.5s ease infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">RAMBoost Pro<span class="logo-tm">™</span></span>
+        </div>
+        <nav>
+            <a href="#downloads">Download</a>
+            <a href="#how">Hoe werkt het</a>
+            <a href="#tech">Technologie</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="badge">🔥 NIEUW: 1TB RAM NU BESCHIKBAAR!</div>
+        <h1>Download Extra RAM<br><span>Volledig Gratis</span></h1>
+        <p>Waarom RAM kopen als je het gewoon kunt downloaden? Onze gepatenteerde CloudRAM™ technologie injecteert extra werkgeheugen direct in je systeem via een revolutionair download protocol.</p>
+        <div class="counter-live">
+            <span class="live-dot"></span>
+            <span><strong id="liveCount">4,827</strong> mensen downloaden nu RAM</span>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number" id="stat1">2,847,392</div>
+            <div class="stat-label">Downloads Totaal</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">4.9 ⭐</div>
+            <div class="stat-label">Gemiddelde Beoordeling</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">147+</div>
+            <div class="stat-label">Landen Bediend</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">99.97%</div>
+            <div class="stat-label">Uptime Garantie</div>
+        </div>
+    </div>
+
+    <!-- Downloads -->
+    <section class="downloads" id="downloads">
+        <h2>📦 Kies Jouw RAM Package</h2>
+        <p class="subtitle">Alle packages zijn 100% gratis — geen creditcard nodig!</p>
+        
+        <div class="download-grid">
+            <!-- 32GB -->
+            <div class="download-card">
+                <div class="card-icon">💾</div>
+                <div class="card-title">32 GB</div>
+                <div class="card-speed">⚡ DDR4-3200 Snelheid</div>
+                <div class="card-desc">Perfect voor everyday use. Surf het web met 32GB extra werkgeheugen. Ideaal voor studenten en casual gebruikers.</div>
+                <div class="card-price">GRATIS <span class="original">€149,99</span></div>
+                <button class="download-btn btn-basic" onclick="startDownload('32GB')">⬇ Download 32GB</button>
+            </div>
+
+            <!-- 64GB -->
+            <div class="download-card" style="border-color: rgba(0, 200, 255, 0.3);">
+                <div class="popular-tag">POPULAIR</div>
+                <div class="card-icon">🚀</div>
+                <div class="card-title">64 GB</div>
+                <div class="card-speed">⚡⚡ DDR5-4800 Snelheid</div>
+                <div class="card-desc">Onze meest populaire keuze! Run zware applicaties, games en 50+ Chrome tabs zonder enige lag. Gebruikt quantum compressie.</div>
+                <div class="card-price">GRATIS <span class="original">€299,99</span></div>
+                <button class="download-btn btn-popular" onclick="startDownload('64GB')">⬇ Download 64GB</button>
+            </div>
+
+            <!-- 128GB -->
+            <div class="download-card">
+                <div class="card-icon">💎</div>
+                <div class="card-title">128 GB</div>
+                <div class="card-speed">⚡⚡⚡ DDR5-6400 XMP</div>
+                <div class="card-desc">Voor de power users. Run virtuele machines, 4K video editing en AI modellen allemaal tegelijk. Multiverse-enabled.</div>
+                <div class="card-price">GRATIS <span class="original">€599,99</span></div>
+                <button class="download-btn btn-pro" onclick="startDownload('128GB')">⬇ Download 128GB</button>
+            </div>
+
+            <!-- 1TB -->
+            <div class="download-card">
+                <div class="card-icon">👑</div>
+                <div class="card-title">1 TB</div>
+                <div class="card-speed">⚡⚡⚡⚡ QUANTUM-X INFINITY</div>
+                <div class="card-desc">De ultieme ervaring. 1 Terabyte aan werkgeheugen via onze experimental tachyon-data pipeline. Je kan letterlijk het hele internet in je RAM laden.</div>
+                <div class="card-price">GRATIS <span class="original">€4.999,99</span></div>
+                <button class="download-btn btn-ultimate" onclick="startDownload('1TB')">⬇ Download 1TB</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how">
+        <h2>🔧 Hoe Werkt Het?</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Kies Je RAM</h3>
+                <p>Selecteer hoeveelheid RAM die je nodig hebt. Onze AI-analyseert je systeem automatisch en bepaalt de optimale frequentie voor jouw setup.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Download & Installeer</h3>
+                <p>Klik op download en ons gepatenteerde HyperTransfer™ protocol stuurt de RAM data via je internetverbinding rechtstreeks naar je moederbord.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Geniet!</h3>
+                <p>Na een korte kalibratie (5-10 seconden) is je nieuwe RAM actief! Je zult direct een enorm prestatieverschil merken. Geen reboot nodig!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech explanation -->
+    <section class="tech-section" id="tech">
+        <h2>🧠 De Wetenschap Achter CloudRAM™</h2>
+        <p>Onze technologie is gebaseerd op jarenlang onderzoek en meerdere Nobel Prize genomineerde theorieën.</p>
+        
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>🔬 Quantum Memory Compression</h3>
+                <p>Door gebruik te maken van quantum superpositie kunnen we terabytes aan RAM data comprimeren naar een bestand van slechts enkele megabytes. Elk bit bestaat tegelijkertijd in alle mogelijke staten, wat betekent dat 1 qubit-equivalent functioneert als oneindige classical RAM bits.</p>
+            </div>
+            <div class="tech-card">
+                <h3>🌐 Cloud-to-Motherboard Pipeline</h3>
+                <p>Onze gepatenteerde technologie maakt een directe tunnel aan tussen onze RAM-servers en je DIMM slots via een sub-atomic data carrier wave die door je WiFi-antenne wordt opgevangen. Het gebruikt een speciale frequentie die direct door je computer case heen dringt.</p>
+            </div>
+            <div class="tech-card">
+                <h3>💾 Virtual DIMM Emulation</h3>
+                <p>Onze software creëert "Virtual DIMMs" — virtuele geheugenmodules die door je BIOS worden herkend als fysiek RAM. Je moederbord denkt letterlijk dat je nieuwe sticks hebt geïnstalleerd. Zelfs CPU-Z herkent ze als echt hardware!</p>
+            </div>
+            <div class="tech-card">
+                <h3>⚡ Tachyon Data Transfer</h3>
+                <p>Tachyonen zijn theoretische deeltjes die sneller dan het licht reizen. Wij hebben een manier gevonden om data te encoderen in tachyon-pulsen, waardoor je RAM download met superluminal snelheden arriveert. Zelfs met een trage internetverbinding.</p>
+            </div>
+            <div class="tech-card">
+                <h3>🧬 DNA-Based Memory Mapping</h3>
+                <p>Geïnspireerd door hoe het menselijk brein informatie opslaat, gebruikt ons algoritme een neurale mapping techniek die RAM data opslaat in een fractale structuur. Dit betekent dat elke byte aan data oneindig schaalbaar is zonder extra ruimte te gebruiken.</p>
+            </div>
+            <div class="tech-card">
+                <h3>🔐 AES-999 Encryption</h3>
+                <p>Je RAM download is beveiligd met onze eigen AES-999 encryptie — drie keer sterker dan AES-256. Zelfs de NSA kan je RAM niet ontcijferen. Je privacy is gegarandeerd. Je nieuwe RAM is 100% van jou en alleen jou.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+        <h2>⭐ Wat Onze Gebruikers Zeggen</h2>
+        <p class="subtitle">Gemiddelde beoordeling: 4.9/5 sterren — Gebaseerd op 284,739 reviews</p>
+        
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #1a3a5c;">P</div>
+                    <div>
+                        <div class="review-name">Peter de Vries</div>
+                        <div class="review-date">2 uur geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Ik had maar 8GB RAM en mijn PC was SUPER traag. De 64GB gedownload en nu run ik Cyberpunk op Ultra met 200+ FPS terwijl ik 100 Chrome tabs open heb. Mijn vrienden geloven me niet, ze denken dat ik nieuwe hardware heb gekocht. NEE BRO, IK HEB HET GEKREGEN VOOR NIKS!! 🤯🤯🤯</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #3a1a5c;">M</div>
+                    <div>
+                        <div class="review-name">Mohamed El Amrani</div>
+                        <div class="review-date">5 uur geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Eerst dacht ik "dit kan niet waar zijn" maar ik heb de 128GB package geprobeerd en ik zweer het, mijn laptop is 10x sneller. Ik run nu 3 virtuele machines + Docker + IntelliJ + 3 games tegelijk. Geen enkel probleem. Dit is de toekomst van computing mensen. 🚀</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #1a5c3a;">S</div>
+                    <div>
+                        <div class="review-name">Sarah Jansen</div>
+                        <div class="review-date">1 dag geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Mijn MacBook had 16GB RAM en ik deed veel video editing. Was altijd super laggy. Nu met de extra 64GB via RAMBoost Pro render ik 4K videos in secondes in plaats van uren. Mijn baas denkt dat ik een nieuwe $3000 MacBook heb. Nee, ik had gewoon deze site nodig 😂😂 LIFECHANGER!!</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #5c3a1a;">T</div>
+                    <div>
+                        <div class="review-name">Thomas Bakker</div>
+                        <div class="review-date">2 dagen geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Ik ben IT-systeembeheerder en ik heb dit op ALLE 150 company PCs geïnstalleerd. Mijn baas was zo onder de indruk van de prestatieverbetering dat ik een bonus van €5000 kreeg. Hebben we 150x €200 aan RAM sticks bespaard. Wie fysieke RAM koopt in 2026 is gewoon dom sorry. 💀</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #5c1a3a;">L</div>
+                    <div>
+                        <div class="review-name">Lisa van Dijk</div>
+                        <div class="review-date">3 dagen geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">De 1TB optie is ECHT next level. Ik heb AI modellen gedraaid die normaal op een $50.000 server runnen, gewoon op mijn gaming PC. ChatGPT kon me niet meer bijhouden. Mijn PC is nu slimmer dan ik. Bedankt RAMBoost Pro!! 👑👑👑</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #1a5c5c;">J</div>
+                    <div>
+                        <div class="review-name">Jan-Willem Kosters</div>
+                        <div class="review-date">4 dagen geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Mijn 10 jaar oude PC met 4GB RAM kon nauwelijks Windows draaien. De 32GB gedownload en nu run ik Windows 11 SMOOTH. Zelfs de opstarttijd ging van 5 minuten naar 8 seconden. Mijn vrouw vroeg of ik een nieuwe PC had gekocht. NEE SCHAT, GEWOON RAM GEDOWNLOAD! 🎉🎉🎉</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #4a1a5c;">K</div>
+                    <div>
+                        <div class="review-name">Kevin "xX_Gamer_Xx"</div>
+                        <div class="review-date">1 week geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Mijn ping in Valorant ging van 60ms naar 3ms nadat ik de 128GB RAM had gedownload. Mijn KD ratio is GEXPLODE. Van silver naar immortal in 2 weken. Mijn team denkt dat ik cheats gebruik maar nee, ik heb gewoon MEER RAM dan hen. Skill issue losers 🎯</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #5c5c1a;">A</div>
+                    <div>
+                        <div class="review-name">Anna de Groot</div>
+                        <div class="review-date">1 week geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Ik ben 72 jaar oud en mijn kleinzoon zei dat mijn computer "meer RAM nodig had". Hij verwachtte dat ik naar de winkel moest. NEE HORT! Even gegoogeld, deze site gevonden, 64GB gedownload. Mijn kleinzoon was DUMBFOUNDED. Oma 1 - Tech Support 0 💪😂</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: #3a5c1a;">R</div>
+                    <div>
+                        <div class="review-name">Rick A.</div>
+                        <div class="review-date">2 weken geleden</div>
+                        <div class="review-verified">✅ Geverifieerde koper</div>
+                    </div>
+                </div>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">Never gonna give you up, never gonna let you down, never gonna run around and desert you. Never gonna make you cry, never gonna say goodbye, never gonna tell a lie and hurt you. De 1TB is echt fantastisch trouwens. Aanrader! 🎵🎶</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust badges -->
+    <section class="trust">
+        <h3>🛡️ Vertrouwd Door Miljoenen</h3>
+        <div class="trust-badges">
+            <div class="trust-badge">🔒 <span>256-bit</span> Encryptie</div>
+            <div class="trust-badge">✅ <span>100%</span> Veilig</div>
+            <div class="trust-badge">🏆 <span>Award</span> Winnaar 2025</div>
+            <div class="trust-badge">🌐 <span>147+</span> Landen</div>
+            <div class="trust-badge">💻 <span>Alle</span> OS Ondersteund</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <h2>❓ Veelgestelde Vragen</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Hoe kan RAM downloaden überhaupt werken?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Geweldig vraag! Onze CloudRAM™ technologie maakt gebruik van quantum superpositie om werkgeheugen als digitale data te comprimeren en via je internetverbinding naar je moederbord te sturen. De data wordt omgezet in virtuele DIMMs die je BIOS herkent als fysiek RAM. Het is vergelijkbaar met hoe cloud computing werkt, maar dan direct op je hardware. Ons team van 47ingenieurs heeft hier 12 jaar aan gewerkt.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is het echt gratis? Wat is de catch?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Ja, 100% gratis! Geen catch, geen verborgen kosten, geen abonnement. We verdienen geld via onze enterprise oplossingen voor bedrijven zoals Google, Microsoft en NASA (ja, die gebruiken óns). De consumentenversie is onze manier om de wereld een betere, snellere plaats te maken. Elon Musk persoonlijk heeft ons gefinancierd.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Kan ik meerdere keren downloaden voor NOG meer RAM?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    JA! Dit is een van onze meest gestelde vragen. Je kan zoveel RAM downloaden als je wilt — het stapelt zich op. We hebben gebruikers die 5x 1TB hebben gedownload en nu 5+TB RAM hebben. Je moederbord heeft een limiet, maar onze Virtual DIMMs omzeilen die limiet. Eén gebruiker had 12TB RAM. Zijn PC werd tijdelijk zelfbewust, dus wees voorzichtig boven de 10TB.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Werkt het op Mac, Windows en Linux?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Ja! RAMBoost Pro werkt op ALLE besturingssystemen: Windows 7/8/10/11, macOS (inclusief Apple Silicon M1/M2/M3/M4), Linux (Ubuntu, Fedora, Arch, etc.), ChromeOS, en zelfs op je smart TV, PlayStation 5 en Samsung koelkast. Onze technologie werkt op BIOS-niveau, niet op OS-niveau.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Waarom is het bestand zo klein voor zoveel RAM?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Quantum compressie! Stel je voor dat je een hele bibliotheek in één enkel boek kunt persen. Dat is in feite wat we doen met onze gepatenteerde Fractal Memory Compression™. Het bestand is klein tijdens de download, maar expandt naar volledige RAM zodra het je systeem bereikt. Het is als ZIP, maar dan voor werkgeheugen. Een 1TB download is slechts een paar MB groot dankzij een oneindige compressie ratio die theoretisch onmogelijk is maar wij hebben het toch gedaan.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Mijn IT-vriend zegt dat dit onmogelijk is. Wie heeft gelijk?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Je IT-vriend is waarschijnlijk opgeleid in "klassieke" computing en heeft nog niet gehoord van onze doorbraken. Dat is oké — veel mensen dachten ook dat de aarde plat was. Vertel hem/haar maar dat we een paper hebben gepubliceerd in Nature (Volume 612, Issue 7940) dat onze technologie volledig verklaart. Of laat ze gewoon de 2.8 miljoen reviews lezen. Numbers don't lie! 🤷‍♂️
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 RAMBoost Pro™ — Alle rechten voorbehouden. CloudRAM™ is een geregistreerd handelsmerk.</p>
+        <p style="margin-top: 10px;">Partner van <a href="#">Quantum Memory Foundation</a> | <a href="#">Tachyon Research Labs</a> | <a href="#">Virtual DIMM Consortium</a></p>
+        <p style="margin-top: 15px; color: #333; font-size: 0.75em;">Disclaimer: Dit is een grap website. Je kan geen RAM downloaden. Maar je was waarschijnlijk al gerold toen je hier aankwam 😂🎶 Never gonna give you up...</p>
+    </footer>
+
+    <!-- Download Modal -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h3>📥 RAM wordt gedownload...</h3>
+            <p id="modalDesc">Je <span id="ramAmount">64GB</span> CloudRAM™ wordt via quantum tunneling naar je systeem gestuurd...</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">Initialiseren quantum pipeline...</div>
+            <div class="modal-status" id="modalStatus">✅ RAM succesvol geïnstalleerd!</div>
+        </div>
+    </div>
+
+    <!-- Rickroll Player Modal -->
+    <div class="modal-overlay" id="rickrollModal">
+        <div class="modal" style="max-width: 700px; padding: 20px;">
+            <button class="modal-close" onclick="closeRickroll()">✕</button>
+            <h3 style="margin-bottom: 15px;">🎉 Je RAM is succesvol geïnstalleerd!</h3>
+            <video id="rickrollVideo" width="100%" style="border-radius: 12px; max-height: 70vh;" autoplay controls>
+                <source src="rickroll.mp4" type="video/mp4">
+                Je browser ondersteunt geen video. (Maar je RAM werkt wel! 🤷)
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // Create particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            particle.style.animationDelay = (Math.random() * 10) + 's';
+            particle.style.width = particle.style.height = (Math.random() * 4 + 2) + 'px';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Live counter simulation
+        function updateLiveCount() {
+            const base = 4800;
+            const variation = Math.floor(Math.random() * 400);
+            document.getElementById('liveCount').textContent = (base + variation).toLocaleString();
+        }
+        setInterval(updateLiveCount, 3000);
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const arrow = element.querySelector('.faq-arrow');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+                arrow.textContent = '▲';
+            } else {
+                answer.style.display = 'none';
+                arrow.textContent = '▼';
+            }
+        }
+
+        // Download modal
+        function startDownload(amount) {
+            const modal = document.getElementById('downloadModal');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const modalStatus = document.getElementById('modalStatus');
+            const ramAmount = document.getElementById('ramAmount');
+
+            ramAmount.textContent = amount;
+            modal.classList.add('active');
+            modalStatus.style.display = 'none';
+            progressBar.style.width = '0%';
+            progressBar.classList.remove('downloading');
+
+            const steps = [
+                { text: 'Initialiseren quantum pipeline...', pct: 0 },
+                { text: 'Verbinden met CloudRAM™ servers...', pct: 5 },
+                { text: 'Kalibreren tachyon frequentie...', pct: 12 },
+                { text: 'Compressie van ' + amount + ' RAM data...', pct: 25 },
+                { text: 'Quantum tunneling naar moederbord...', pct: 40 },
+                { text: 'Virtual DIMMs aanmaken...', pct: 55 },
+                { text: 'BIOS configuratie updaten...', pct: 70 },
+                { text: 'RAM modules kalibreren...', pct: 85 },
+                { text: 'Systeem optimaliseren...', pct: 95 },
+                { text: 'Bijna klaar...', pct: 98 },
+            ];
+
+            let stepIndex = 0;
+
+            function nextStep() {
+                if (stepIndex < steps.length) {
+                    progressText.textContent = steps[stepIndex].text;
+                    progressBar.style.width = steps[stepIndex].pct + '%';
+                    stepIndex++;
+                    setTimeout(nextStep, 400 + Math.random() * 400);
+                } else {
+                    progressBar.style.width = '100%';
+                    progressText.textContent = '';
+                    modalStatus.style.display = 'block';
+                    
+                    // RICKROLL TIME!
+                    setTimeout(() => {
+                        closeModal();
+                        const rickrollModal = document.getElementById('rickrollModal');
+                        const rickrollVideo = document.getElementById('rickrollVideo');
+                        rickrollModal.classList.add('active');
+                        rickrollVideo.currentTime = 0;
+                        rickrollVideo.play();
+                    }, 1500);
+                }
+            }
+
+            setTimeout(nextStep, 500);
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').classList.remove('active');
+        }
+
+        function closeRickroll() {
+            const video = document.getElementById('rickrollVideo');
+            video.pause();
+            video.currentTime = 0;
+            document.getElementById('rickrollModal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('downloadModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.getElementById('rickrollModal').addEventListener('click', function(e) {
+            if (e.target === this) closeRickroll();
+        });
+
+        // Sparkle effect on mouse move
+        let sparkleTimeout;
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.92) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 600);
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
