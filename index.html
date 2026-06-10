@@ -747,6 +747,7 @@
             <a href="#tech">Technologie</a>
             <a href="#reviews">Reviews</a>
             <a href="#faq">FAQ</a>
+            <a href="#" id="langToggle" onclick="toggleLang(event)" style="border:1px solid rgba(0,200,255,0.4);border-radius:20px;padding:4px 12px;">🌐 NL</a>
         </nav>
     </header>
 
@@ -1110,7 +1111,7 @@
             <button class="modal-close" onclick="closeRickroll()">✕</button>
             <h3 style="margin-bottom: 15px;">🎉 Je RAM is succesvol geïnstalleerd!</h3>
             <video id="rickrollVideo" width="100%" style="border-radius: 12px; max-height: 70vh;" autoplay controls>
-               <source src="setup.ramb" type="video/mp4">
+                <source src="rickroll_compressed.mp4" type="video/mp4">
                 Je browser ondersteunt geen video. (Maar je RAM werkt wel! 🤷)
             </video>
         </div>
@@ -1181,7 +1182,7 @@
 
             function nextStep() {
                 if (stepIndex < steps.length) {
-                    progressText.textContent = steps[stepIndex].text;
+                    progressText.textContent = (typeof tr==='function') ? tr(steps[stepIndex].text) : steps[stepIndex].text;
                     progressBar.style.width = steps[stepIndex].pct + '%';
                     stepIndex++;
                     setTimeout(nextStep, 400 + Math.random() * 400);
@@ -1247,6 +1248,168 @@
                 });
             });
         });
+    </script>
+
+    <!-- ===== Language system: site is written in Dutch; default display = English ===== -->
+    <script>
+    const NL2EN = {};
+    Object.assign(NL2EN, {
+        "Hoe werkt het":"How it works",
+        "Technologie":"Technology",
+        "🔥 NIEUW: 1TB RAM NU BESCHIKBAAR!":"🔥 NEW: 1TB RAM NOW AVAILABLE!",
+        "Download Extra RAM":"Download Extra RAM",
+        "Volledig Gratis":"Completely Free",
+        "Waarom RAM kopen als je het gewoon kunt downloaden? Onze gepatenteerde CloudRAM™ technologie injecteert extra werkgeheugen direct in je systeem via een revolutionair download protocol.":"Why buy RAM when you can just download it? Our patented CloudRAM™ technology injects extra memory straight into your system via a revolutionary download protocol.",
+        "mensen downloaden nu RAM":"people downloading RAM right now",
+        "Downloads Totaal":"Total Downloads",
+        "Gemiddelde Beoordeling":"Average Rating",
+        "Landen Bediend":"Countries Served",
+        "Uptime Garantie":"Uptime Guarantee",
+        "📦 Kies Jouw RAM Package":"📦 Choose Your RAM Package",
+        "Alle packages zijn 100% gratis — geen creditcard nodig!":"All packages are 100% free — no credit card required!",
+        "⚡ DDR4-3200 Snelheid":"⚡ DDR4-3200 Speed",
+        "Perfect voor everyday use. Surf het web met 32GB extra werkgeheugen. Ideaal voor studenten en casual gebruikers.":"Perfect for everyday use. Surf the web with 32GB of extra memory. Ideal for students and casual users.",
+        "GRATIS":"FREE",
+        "⬇ Download 32GB":"⬇ Download 32GB",
+        "POPULAIR":"POPULAR",
+        "⚡⚡ DDR5-4800 Snelheid":"⚡⚡ DDR5-4800 Speed",
+        "Onze meest populaire keuze! Run zware applicaties, games en 50+ Chrome tabs zonder enige lag. Gebruikt quantum compressie.":"Our most popular pick! Run heavy apps, games and 50+ Chrome tabs without any lag. Uses quantum compression.",
+        "⬇ Download 64GB":"⬇ Download 64GB",
+        "⚡⚡⚡ DDR5-6400 XMP":"⚡⚡⚡ DDR5-6400 XMP",
+        "Voor de power users. Run virtuele machines, 4K video editing en AI modellen allemaal tegelijk. Multiverse-enabled.":"For power users. Run virtual machines, 4K video editing and AI models all at once. Multiverse-enabled.",
+        "⬇ Download 128GB":"⬇ Download 128GB",
+        "⚡⚡⚡⚡ QUANTUM-X INFINITY":"⚡⚡⚡⚡ QUANTUM-X INFINITY",
+        "De ultieme ervaring. 1 Terabyte aan werkgeheugen via onze experimental tachyon-data pipeline. Je kan letterlijk het hele internet in je RAM laden.":"The ultimate experience. 1 Terabyte of memory via our experimental tachyon-data pipeline. You can literally load the whole internet into your RAM.",
+        "⬇ Download 1TB":"⬇ Download 1TB",
+        "🔧 Hoe Werkt Het?":"🔧 How Does It Work?",
+        "Kies Je RAM":"Choose Your RAM",
+        "Selecteer hoeveelheid RAM die je nodig hebt. Onze AI-analyseert je systeem automatisch en bepaalt de optimale frequentie voor jouw setup.":"Select how much RAM you need. Our AI automatically analyzes your system and determines the optimal frequency for your setup.",
+        "Download & Installeer":"Download & Install",
+        "Klik op download en ons gepatenteerde HyperTransfer™ protocol stuurt de RAM data via je internetverbinding rechtstreeks naar je moederbord.":"Click download and our patented HyperTransfer™ protocol sends the RAM data over your internet connection straight to your motherboard.",
+        "Geniet!":"Enjoy!",
+        "Na een korte kalibratie (5-10 seconden) is je nieuwe RAM actief! Je zult direct een enorm prestatieverschil merken. Geen reboot nodig!":"After a short calibration (5-10 seconds) your new RAM is active! You'll instantly notice a huge performance boost. No reboot needed!",
+        "🧠 De Wetenschap Achter CloudRAM™":"🧠 The Science Behind CloudRAM™",
+        "Onze technologie is gebaseerd op jarenlang onderzoek en meerdere Nobel Prize genomineerde theorieën.":"Our technology is based on years of research and multiple Nobel Prize nominated theories."
+    });
+    Object.assign(NL2EN, {
+        "🔬 Quantum Memory Compression":"🔬 Quantum Memory Compression",
+        "Door gebruik te maken van quantum superpositie kunnen we terabytes aan RAM data comprimeren naar een bestand van slechts enkele megabytes. Elk bit bestaat tegelijkertijd in alle mogelijke staten, wat betekent dat 1 qubit-equivalent functioneert als oneindige classical RAM bits.":"By using quantum superposition we compress terabytes of RAM data into a file of just a few megabytes. Each bit exists simultaneously in all possible states, meaning 1 qubit-equivalent acts as infinite classical RAM bits.",
+        "🌐 Cloud-to-Motherboard Pipeline":"🌐 Cloud-to-Motherboard Pipeline",
+        "Onze gepatenteerde technologie maakt een directe tunnel aan tussen onze RAM-servers en je DIMM slots via een sub-atomic data carrier wave die door je WiFi-antenne wordt opgevangen. Het gebruikt een speciale frequentie die direct door je computer case heen dringt.":"Our patented technology opens a direct tunnel between our RAM servers and your DIMM slots via a sub-atomic data carrier wave picked up by your WiFi antenna. It uses a special frequency that passes straight through your computer case.",
+        "💾 Virtual DIMM Emulation":"💾 Virtual DIMM Emulation",
+        "Onze software creëert \"Virtual DIMMs\" — virtuele geheugenmodules die door je BIOS worden herkend als fysiek RAM. Je moederbord denkt letterlijk dat je nieuwe sticks hebt geïnstalleerd. Zelfs CPU-Z herkent ze als echt hardware!":"Our software creates \"Virtual DIMMs\" — virtual memory modules recognized by your BIOS as physical RAM. Your motherboard literally thinks you installed new sticks. Even CPU-Z detects them as real hardware!",
+        "⚡ Tachyon Data Transfer":"⚡ Tachyon Data Transfer",
+        "Tachyonen zijn theoretische deeltjes die sneller dan het licht reizen. Wij hebben een manier gevonden om data te encoderen in tachyon-pulsen, waardoor je RAM download met superluminal snelheden arriveert. Zelfs met een trage internetverbinding.":"Tachyons are theoretical particles that travel faster than light. We found a way to encode data into tachyon pulses, so your RAM download arrives at superluminal speeds. Even on a slow connection.",
+        "🧬 DNA-Based Memory Mapping":"🧬 DNA-Based Memory Mapping",
+        "Geïnspireerd door hoe het menselijk brein informatie opslaat, gebruikt ons algoritme een neurale mapping techniek die RAM data opslaat in een fractale structuur. Dit betekent dat elke byte aan data oneindig schaalbaar is zonder extra ruimte te gebruiken.":"Inspired by how the human brain stores information, our algorithm uses a neural mapping technique that stores RAM data in a fractal structure. This means every byte of data is infinitely scalable without using extra space.",
+        "🔐 AES-999 Encryption":"🔐 AES-999 Encryption",
+        "Je RAM download is beveiligd met onze eigen AES-999 encryptie — drie keer sterker dan AES-256. Zelfs de NSA kan je RAM niet ontcijferen. Je privacy is gegarandeerd. Je nieuwe RAM is 100% van jou en alleen jou.":"Your RAM download is secured with our own AES-999 encryption — three times stronger than AES-256. Even the NSA can't decrypt your RAM. Your privacy is guaranteed. Your new RAM is 100% yours, and yours alone.",
+        "⭐ Wat Onze Gebruikers Zeggen":"⭐ What Our Users Say",
+        "Gemiddelde beoordeling: 4.9/5 sterren — Gebaseerd op 284,739 reviews":"Average rating: 4.9/5 stars — Based on 284,739 reviews",
+        "2 uur geleden":"2 hours ago",
+        "✅ Geverifieerde koper":"✅ Verified buyer",
+        "5 uur geleden":"5 hours ago",
+        "1 dag geleden":"1 day ago",
+        "2 dagen geleden":"2 days ago",
+        "3 dagen geleden":"3 days ago",
+        "4 dagen geleden":"4 days ago",
+        "1 week geleden":"1 week ago",
+        "2 weken geleden":"2 weeks ago"
+    });
+    Object.assign(NL2EN, {
+        "Ik had maar 8GB RAM en mijn PC was SUPER traag. De 64GB gedownload en nu run ik Cyberpunk op Ultra met 200+ FPS terwijl ik 100 Chrome tabs open heb. Mijn vrienden geloven me niet, ze denken dat ik nieuwe hardware heb gekocht. NEE BRO, IK HEB HET GEKREGEN VOOR NIKS!! 🤯🤯🤯":"I only had 8GB of RAM and my PC was SUPER slow. Downloaded the 64GB and now I run Cyberpunk on Ultra at 200+ FPS with 100 Chrome tabs open. My friends don't believe me, they think I bought new hardware. NO BRO, I GOT IT FOR FREE!! 🤯🤯🤯",
+        "Eerst dacht ik \"dit kan niet waar zijn\" maar ik heb de 128GB package geprobeerd en ik zweer het, mijn laptop is 10x sneller. Ik run nu 3 virtuele machines + Docker + IntelliJ + 3 games tegelijk. Geen enkel probleem. Dit is de toekomst van computing mensen. 🚀":"At first I thought \"this can't be real\" but I tried the 128GB package and I swear, my laptop is 10x faster. I now run 3 virtual machines + Docker + IntelliJ + 3 games at once. No problems at all. This is the future of computing, people. 🚀",
+        "Mijn MacBook had 16GB RAM en ik deed veel video editing. Was altijd super laggy. Nu met de extra 64GB via RAMBoost Pro render ik 4K videos in secondes in plaats van uren. Mijn baas denkt dat ik een nieuwe $3000 MacBook heb. Nee, ik had gewoon deze site nodig 😂😂 LIFECHANGER!!":"My MacBook had 16GB of RAM and I did a lot of video editing. Always super laggy. Now with the extra 64GB via RAMBoost Pro I render 4K videos in seconds instead of hours. My boss thinks I have a new $3000 MacBook. Nope, I just needed this site 😂😂 LIFECHANGER!!",
+        "Ik ben IT-systeembeheerder en ik heb dit op ALLE 150 company PCs geïnstalleerd. Mijn baas was zo onder de indruk van de prestatieverbetering dat ik een bonus van €5000 kreeg. Hebben we 150x €200 aan RAM sticks bespaard. Wie fysieke RAM koopt in 2026 is gewoon dom sorry. 💀":"I'm an IT sysadmin and I installed this on ALL 150 company PCs. My boss was so impressed by the performance boost that I got a €5000 bonus. We saved 150x €200 on RAM sticks. Whoever buys physical RAM in 2026 is just dumb, sorry. 💀",
+        "De 1TB optie is ECHT next level. Ik heb AI modellen gedraaid die normaal op een $50.000 server runnen, gewoon op mijn gaming PC. ChatGPT kon me niet meer bijhouden. Mijn PC is nu slimmer dan ik. Bedankt RAMBoost Pro!! 👑👑👑":"The 1TB option is REALLY next level. I ran AI models that normally need a $50,000 server, right on my gaming PC. ChatGPT couldn't keep up with me anymore. My PC is now smarter than me. Thanks RAMBoost Pro!! 👑👑👑",
+        "Mijn 10 jaar oude PC met 4GB RAM kon nauwelijks Windows draaien. De 32GB gedownload en nu run ik Windows 11 SMOOTH. Zelfs de opstarttijd ging van 5 minuten naar 8 seconden. Mijn vrouw vroeg of ik een nieuwe PC had gekocht. NEE SCHAT, GEWOON RAM GEDOWNLOAD! 🎉🎉🎉":"My 10-year-old PC with 4GB of RAM could barely run Windows. Downloaded the 32GB and now I run Windows 11 SMOOTH. Even boot time went from 5 minutes to 8 seconds. My wife asked if I bought a new PC. NO HONEY, JUST DOWNLOADED RAM! 🎉🎉🎉",
+        "Mijn ping in Valorant ging van 60ms naar 3ms nadat ik de 128GB RAM had gedownload. Mijn KD ratio is GEXPLODE. Van silver naar immortal in 2 weken. Mijn team denkt dat ik cheats gebruik maar nee, ik heb gewoon MEER RAM dan hen. Skill issue losers 🎯":"My ping in Valorant went from 60ms to 3ms after I downloaded the 128GB RAM. My KD ratio EXPLODED. From silver to immortal in 2 weeks. My team thinks I use cheats but no, I just have MORE RAM than them. Skill issue losers 🎯",
+        "Ik ben 72 jaar oud en mijn kleinzoon zei dat mijn computer \"meer RAM nodig had\". Hij verwachtte dat ik naar de winkel moest. NEE HORT! Even gegoogeld, deze site gevonden, 64GB gedownload. Mijn kleinzoon was DUMBFOUNDED. Oma 1 - Tech Support 0 💪😂":"I'm 72 years old and my grandson said my computer \"needed more RAM\". He expected me to go to the store. NO WAY! Quick google, found this site, downloaded 64GB. My grandson was DUMBFOUNDED. Grandma 1 - Tech Support 0 💪😂",
+        "Never gonna give you up, never gonna let you down, never gonna run around and desert you. Never gonna make you cry, never gonna say goodbye, never gonna tell a lie and hurt you. De 1TB is echt fantastisch trouwens. Aanrader! 🎵🎶":"Never gonna give you up, never gonna let you down, never gonna run around and desert you. Never gonna make you cry, never gonna say goodbye, never gonna tell a lie and hurt you. The 1TB is really fantastic by the way. Recommended! 🎵🎶",
+        "🛡️ Vertrouwd Door Miljoenen":"🛡️ Trusted By Millions",
+        "Encryptie":"Encryption",
+        "Veilig":"Secure",
+        "Winnaar 2025":"Winner 2025",
+        "Landen":"Countries",
+        "Alle":"All",
+        "OS Ondersteund":"OS Supported",
+        "❓ Veelgestelde Vragen":"❓ Frequently Asked Questions",
+        "Hoe kan RAM downloaden überhaupt werken?":"How can downloading RAM even work?",
+        "Geweldig vraag! Onze CloudRAM™ technologie maakt gebruik van quantum superpositie om werkgeheugen als digitale data te comprimeren en via je internetverbinding naar je moederbord te sturen. De data wordt omgezet in virtuele DIMMs die je BIOS herkent als fysiek RAM. Het is vergelijkbaar met hoe cloud computing werkt, maar dan direct op je hardware. Ons team van 47ingenieurs heeft hier 12 jaar aan gewerkt.":"Great question! Our CloudRAM™ technology uses quantum superposition to compress memory as digital data and send it over your internet connection to your motherboard. The data is converted into virtual DIMMs that your BIOS recognizes as physical RAM. It's similar to how cloud computing works, but directly on your hardware. Our team of 47 engineers worked on this for 12 years.",
+        "Is het echt gratis? Wat is de catch?":"Is it really free? What's the catch?",
+        "Ja, 100% gratis! Geen catch, geen verborgen kosten, geen abonnement. We verdienen geld via onze enterprise oplossingen voor bedrijven zoals Google, Microsoft en NASA (ja, die gebruiken óns). De consumentenversie is onze manier om de wereld een betere, snellere plaats te maken. Elon Musk persoonlijk heeft ons gefinancierd.":"Yes, 100% free! No catch, no hidden costs, no subscription. We make money through our enterprise solutions for companies like Google, Microsoft and NASA (yes, they use US). The consumer version is our way of making the world a better, faster place. Elon Musk personally funded us.",
+        "Kan ik meerdere keren downloaden voor NOG meer RAM?":"Can I download multiple times for EVEN more RAM?",
+        "JA! Dit is een van onze meest gestelde vragen. Je kan zoveel RAM downloaden als je wilt — het stapelt zich op. We hebben gebruikers die 5x 1TB hebben gedownload en nu 5+TB RAM hebben. Je moederbord heeft een limiet, maar onze Virtual DIMMs omzeilen die limiet. Eén gebruiker had 12TB RAM. Zijn PC werd tijdelijk zelfbewust, dus wees voorzichtig boven de 10TB.":"YES! This is one of our most asked questions. You can download as much RAM as you want — it stacks. We have users who downloaded 1TB 5x and now have 5+TB of RAM. Your motherboard has a limit, but our Virtual DIMMs bypass that limit. One user had 12TB of RAM. His PC briefly became self-aware, so be careful above 10TB.",
+        "Werkt het op Mac, Windows en Linux?":"Does it work on Mac, Windows and Linux?",
+        "Ja! RAMBoost Pro werkt op ALLE besturingssystemen: Windows 7/8/10/11, macOS (inclusief Apple Silicon M1/M2/M3/M4), Linux (Ubuntu, Fedora, Arch, etc.), ChromeOS, en zelfs op je smart TV, PlayStation 5 en Samsung koelkast. Onze technologie werkt op BIOS-niveau, niet op OS-niveau.":"Yes! RAMBoost Pro works on ALL operating systems: Windows 7/8/10/11, macOS (including Apple Silicon M1/M2/M3/M4), Linux (Ubuntu, Fedora, Arch, etc.), ChromeOS, and even your smart TV, PlayStation 5 and Samsung fridge. Our technology works at the BIOS level, not the OS level.",
+        "Waarom is het bestand zo klein voor zoveel RAM?":"Why is the file so small for so much RAM?",
+        "Quantum compressie! Stel je voor dat je een hele bibliotheek in één enkel boek kunt persen. Dat is in feite wat we doen met onze gepatenteerde Fractal Memory Compression™. Het bestand is klein tijdens de download, maar expandt naar volledige RAM zodra het je systeem bereikt. Het is als ZIP, maar dan voor werkgeheugen. Een 1TB download is slechts een paar MB groot dankzij een oneindige compressie ratio die theoretisch onmogelijk is maar wij hebben het toch gedaan.":"Quantum compression! Imagine being able to squeeze an entire library into a single book. That's basically what we do with our patented Fractal Memory Compression™. The file is small during download, but expands to full RAM once it reaches your system. It's like ZIP, but for memory. A 1TB download is only a few MB thanks to an infinite compression ratio that is theoretically impossible but we did it anyway.",
+        "Mijn IT-vriend zegt dat dit onmogelijk is. Wie heeft gelijk?":"My IT friend says this is impossible. Who's right?",
+        "Je IT-vriend is waarschijnlijk opgeleid in \"klassieke\" computing en heeft nog niet gehoord van onze doorbraken. Dat is oké — veel mensen dachten ook dat de aarde plat was. Vertel hem/haar maar dat we een paper hebben gepubliceerd in Nature (Volume 612, Issue 7940) dat onze technologie volledig verklaart. Of laat ze gewoon de 2.8 miljoen reviews lezen. Numbers don't lie! 🤷‍♂️":"Your IT friend was probably trained in \"classical\" computing and hasn't heard of our breakthroughs yet. That's okay — many people thought the earth was flat too. Tell them we published a paper in Nature (Volume 612, Issue 7940) that fully explains our technology. Or just have them read the 2.8 million reviews. Numbers don't lie! 🤷‍♂️",
+        "© 2026 RAMBoost Pro™ — Alle rechten voorbehouden. CloudRAM™ is een geregistreerd handelsmerk.":"© 2026 RAMBoost Pro™ — All rights reserved. CloudRAM™ is a registered trademark.",
+        "Partner van":"Partner of",
+        "Disclaimer: Dit is een grap website. Je kan geen RAM downloaden. Maar je was waarschijnlijk al gerold toen je hier aankwam 😂🎶 Never gonna give you up...":"Disclaimer: This is a joke website. You can't download RAM. But you were probably already rolled by the time you got here 😂🎶 Never gonna give you up...",
+        "📥 RAM wordt gedownload...":"📥 Downloading RAM...",
+        "CloudRAM™ wordt via quantum tunneling naar je systeem gestuurd...":"CloudRAM™ is being sent to your system via quantum tunneling...",
+        "Je":"Your",
+        "Initialiseren quantum pipeline...":"Initializing quantum pipeline...",
+        "✅ RAM succesvol geïnstalleerd!":"✅ RAM installed successfully!",
+        "🎉 Je RAM is succesvol geïnstalleerd!":"🎉 Your RAM has been installed successfully!",
+        "Je browser ondersteunt geen video. (Maar je RAM werkt wel! 🤷)":"Your browser doesn't support video. (But your RAM works! 🤷)"
+    });
+
+    // dynamic strings used by the download progress (JS-generated)
+    const NL2EN_DYN = {
+        "Verbinden met CloudRAM™ servers...":"Connecting to CloudRAM™ servers...",
+        "Kalibreren tachyon frequentie...":"Calibrating tachyon frequency...",
+        "Quantum tunneling naar moederbord...":"Quantum tunneling to motherboard...",
+        "Virtual DIMMs aanmaken...":"Creating Virtual DIMMs...",
+        "BIOS configuratie updaten...":"Updating BIOS configuration...",
+        "RAM modules kalibreren...":"Calibrating RAM modules...",
+        "Systeem optimaliseren...":"Optimizing system...",
+        "Bijna klaar...":"Almost done..."
+    };
+    Object.assign(NL2EN, NL2EN_DYN);
+
+    // translate a dynamic (JS-generated) string when English is active
+    function tr(str){
+        if(window.__lang !== 'en') return str;
+        if(NL2EN[str]) return NL2EN[str];
+        // handle the "Compressie van <amount> RAM data..." template
+        const m = str.match(/^Compressie van (.+) RAM data\.\.\.$/);
+        if(m) return "Compressing " + m[1] + " RAM data...";
+        return str;
+    }
+
+    function applyLang(lang){
+        document.documentElement.lang = (lang==='nl') ? 'nl' : 'en';
+        const toEN = (lang==='en');
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(n=>{
+            const raw = n.nodeValue;
+            const key = raw.trim();
+            if(!key) return;
+            if(toEN){
+                if(NL2EN[key]){ n._nl = raw; n.nodeValue = raw.replace(key, NL2EN[key]); }
+            } else {
+                if(n._nl){ n.nodeValue = n._nl; }
+            }
+        });
+        const btn = document.getElementById('langToggle');
+        if(btn) btn.textContent = toEN ? '🌐 NL' : '🌐 EN';
+        try{ localStorage.setItem('ramboost_lang', lang); }catch(e){}
+        window.__lang = lang;
+    }
+    function toggleLang(e){ if(e) e.preventDefault(); applyLang(window.__lang==='en' ? 'nl' : 'en'); }
+
+    // default = English (translate on load)
+    document.addEventListener('DOMContentLoaded', ()=>{
+        let saved = 'en';
+        try{ saved = localStorage.getItem('ramboost_lang') || 'en'; }catch(e){}
+        applyLang(saved);
+    });
     </script>
 </body>
 </html>
