@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual DIMM Consortium (VD-C) - International Standards Organization</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-symbol {
+            background-color: var(--secondary);
+            color: white;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #93c5fd;
+        }
+
+        .back-btn {
+            background: white;
+            color: var(--primary);
+            border: 1px solid white;
+            padding: 6px 14px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Banner */
+        .banner {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-left: 5px solid var(--secondary);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+
+        .banner h2 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .banner p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Main Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2.sec-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .spec-table th, .spec-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .spec-table th {
+            background-color: #f1f5f9;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .spec-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .status-badge {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Sidebar info */
+        .sidebar-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-card h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+        }
+
+        .sidebar-card ul {
+            list-style-type: none;
+        }
+
+        .sidebar-card li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sidebar-card li strong {
+            color: var(--text);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            background: #f1f5f9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <span class="logo-symbol">VDC</span>
+            <div class="logo-text">
+                <h1>Virtual DIMM Consortium</h1>
+                <p>Standardizing Non-Physical Silicon Interfaces</p>
+            </div>
+        </div>
+        <a href="index.html" class="back-btn">Go to Partner Site</a>
+    </header>
+
+    <div class="container">
+        <div class="banner">
+            <h2>Consortium Announcement: Release of VDIMM Specification 4.2</h2>
+            <p>VDC has officially ratified the VDIMM-4.2 standard, bringing full architectural specifications for virtual physical mapping of cloud-based DDR5 RAM modules directly inside standard client BIOS configurations.</p>
+        </div>
+
+        <div class="grid">
+            <main>
+                <section>
+                    <h2 class="sec-title">Active Standard Specifications</h2>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">The Virtual DIMM Consortium publishes international standards for emulating physical memory slots. Motherboard and chipset manufacturers comply with these standards to allow Virtual DIMM detection.</p>
+                    
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Standard ID</th>
+                                <th>Description</th>
+                                <th>Version</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>VDC-744</strong></td>
+                                <td>Wireless Motherboard Pin Interface Standards for Virtual Sockets</td>
+                                <td>v4.2.1</td>
+                                <td><span class="status-badge">Approved</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>VDC-109</strong></td>
+                                <td>Ethernet-to-RAM RJ-45 Polarity Reversal & Quantum Extraction Protocol</td>
+                                <td>v2.0</td>
+                                <td><span class="status-badge">Approved</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>VDC-022</strong></td>
+                                <td>BIOS Deception & Virtual DIMM Module Recognition Specifications</td>
+                                <td>v1.9-beta</td>
+                                <td><span class="status-badge">Approved</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>VDC-991</strong></td>
+                                <td>Decentralized CloudRAM Allocation & Superposition Key Exchanges</td>
+                                <td>v5.0-draft</td>
+                                <td><span class="status-badge">Under Review</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2 class="sec-title">About the Consortium</h2>
+                    <p style="font-size: 0.95rem; margin-bottom: 15px;">Founded in 2021, the Virtual DIMM Consortium (VDC) is a non-profit international standards organization dedicated to standardizing software-to-silicon interfaces. Our members include major tech companies, imaginary hardware suppliers, and top-tier cloud RAM innovators.</p>
+                    <p style="font-size: 0.95rem;">By establishing universal specifications, VDC ensures that downloaded RAM from verified suppliers (like RAMBoost Pro™) is recognized as actual physical hardware by your operating system, preventing hardware conflicts and BIOS failure loops.</p>
+                </section>
+            </main>
+
+            <aside>
+                <div class="sidebar-card">
+                    <h3>Consortium Members</h3>
+                    <ul>
+                        <li><strong>RAMBoost Pro™</strong> <span>Founding Member</span></li>
+                        <li><strong>Imaginary Silicon Ltd</strong> <span>Core Board</span></li>
+                        <li><strong>CloudRAM Corporation</strong> <span>Associate</span></li>
+                        <li><strong>Tachyon Research Labs</strong> <span>Technical Liaison</span></li>
+                        <li><strong>Theoretical Hardware Inc</strong> <span>Observer</span></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Document Directory</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Access the latest technical sheets:</p>
+                    <ul style="list-style-type: square; padding-left: 15px;">
+                        <li><a href="#" onclick="alert('Downloading vdc_744_spec.pdf (Simulated)'); return false;" style="color: var(--secondary); font-size: 0.85rem; text-decoration: none;">vdc_744_spec_v4.2.pdf</a></li>
+                        <li><a href="#" onclick="alert('Downloading vdc_109_spec.pdf (Simulated)'); return false;" style="color: var(--secondary); font-size: 0.85rem; text-decoration: none;">vdc_109_spec_v2.0.pdf</a></li>
+                        <li><a href="#" onclick="alert('Downloading vdc_022_spec.pdf (Simulated)'); return false;" style="color: var(--secondary); font-size: 0.85rem; text-decoration: none;">vdc_022_spec_v1.9.pdf</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Virtual DIMM Consortium (VD-C). All rights reserved.</p>
+        <p style="color: #94a3b8; font-size: 0.75rem; margin-top: 10px;">Disclaimer: This website is a fictional standards body created for the RAMBoost Pro™ joke ecosystem. No physical standards or PDFs actually exist here.</p>
+    </footer>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0a8133fe8d11c78',t:'MTc4MTI1OTEyNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

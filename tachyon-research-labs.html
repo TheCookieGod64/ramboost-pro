@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tachyon Research Labs - Faster Than Light Data Technologies</title>
+    <style>
+        :root {
+            --primary: #0088ff;
+            --primary-glow: rgba(0, 136, 255, 0.4);
+            --bg: #030712;
+            --card-bg: #0b1120;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: rgba(0, 136, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Consolas', 'Courier New', monospace, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 136, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 136, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: rgba(3, 7, 18, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .logo-symbol {
+            font-weight: bold;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 5px var(--primary-glow); }
+            100% { text-shadow: 0 0 15px var(--primary); }
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: 60px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .tag {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Tachyon Core Dial */
+        .core-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: left;
+            position: relative;
+        }
+
+        .core-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 136, 255, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .slider-container {
+            margin: 25px 0;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid var(--border);
+            height: 10px;
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .stats-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            font-size: 0.95rem;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Products Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px dashed rgba(0, 136, 255, 0.3);
+            border-radius: 4px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-style: solid;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 136, 255, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Warnings Section */
+        .warning-banner {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 30px;
+            border: 1px solid #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+            color: #fca5a5;
+        }
+
+        .warning-banner h4 {
+            color: #ef4444;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(0, 136, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-symbol">[&gt;&gt;&gt;]</span> TRL_SYSTEMS
+        </a>
+        <a href="index.html" class="back-btn">RETURN TO ROOT</a>
+    </header>
+
+    <section class="hero">
+        <span class="tag">SECURE CONNECTION ESTABLISHED // TACHYON-DATA INC</span>
+        <h1>We Break The Speed of Light</h1>
+        <p class="subtitle">Standard internet protocols wait for data packets. We bypass temporal constraints altogether by transmitting state data back in time via hyper-dimensional tachyon waves.</p>
+
+        <div class="core-box">
+            <div class="core-header">
+                <span>SYSTEM STATUS: STABLE</span>
+                <span>TIMELINE: ORIGINAL</span>
+            </div>
+            
+            <p><strong>Chronal Stream Dial:</strong> Adjust dial to alter the download timeline offset. Settings exceeding the speed of light might cause localized space-time loops.</p>
+            
+            <div class="slider-container">
+                <input type="range" id="tempoSlider" min="0" max="100" value="10" oninput="updateCoreStats(this.value)">
+            </div>
+
+            <div class="stats-display">
+                <div>Temporal Offset: <span id="offsetStat">-2.4s (Future)</span></div>
+                <div>Bandwidth Speed: <span id="speedStat">3.8 Terabytes/s</span></div>
+                <div>Timeline Coherence: <span id="cohereStat">99.8%</span></div>
+                <div>Localized Gravity: <span id="gravStat">1.00G</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid">
+        <div class="card">
+            <h3>&gt; Pre-emptive Fetch Protocol</h3>
+            <p>Our FTL-Sync algorithm registers keyboard movements and predicts which RAM amount you'll download tomorrow. It then initiates the download 24 hours before you visit the webpage. Zero wait times guaranteed.</p>
+        </div>
+        <div class="card">
+            <h3>&gt; Causal Loop Storage™</h3>
+            <p>Why write new data to memory chips when you can fetch it from the future? Our Causal Loop Cache registers future calculations and feeds them directly to your CPU today, skipping execution loops entirely.</p>
+        </div>
+        <div class="card">
+            <h3>&gt; Chrono-Ether Routing</h3>
+            <p>If you experience WiFi drops, our Chrono-Ether router scans alternate timelines where your connection was perfectly stable, copy-pastes those packets into your current timeline, and saves you from lag.</p>
+        </div>
+    </div>
+
+    <section class="warning-banner">
+        <h4>⚠️ SAFETY NOTICE FOR QUANTUM DEVIATIONS</h4>
+        <p>Tachyon data packets must be handled carefully. Adjusting your Chronal Stream beyond the default threshold might cause your system clock to run backwards, or result in you receiving email messages that you will write next Friday. Use the timeline dial responsibly.</p>
+    </section>
+
+    <footer>
+        <p>TACHYON RESEARCH LABS INC // EST. 2038 (Chronologically active since 1994)</p>
+        <p style="color: #4b5563; font-size: 0.7rem; margin-top: 10px;">Disclaimer: This is a sub-universe joke site for RAMBoost Pro™. Adjusting the slider does not actually modify time, physical laws, or your motherboard's clock speed.</p>
+    </footer>
+
+    <script>
+        function updateCoreStats(val) {
+            const offset = document.getElementById('offsetStat');
+            const speed = document.getElementById('speedStat');
+            const cohere = document.getElementById('cohereStat');
+            const grav = document.getElementById('gravStat');
+
+            if (val == 0) {
+                offset.textContent = "0.0s (Realtime)";
+                speed.textContent = "120 Megabytes/s";
+                cohere.textContent = "100.0% (Classic)";
+                grav.textContent = "1.00G";
+            } else if (val < 40) {
+                offset.textContent = `-${(val * 0.4).toFixed(1)}s (Future)`;
+                speed.textContent = `${(val * 0.8 + 1).toFixed(1)} Terabytes/s`;
+                cohere.textContent = `${(100 - val * 0.15).toFixed(1)}%`;
+                grav.textContent = "1.00G";
+            } else if (val < 80) {
+                offset.textContent = `-${(val * 1.5).toFixed(1)}m (Future)`;
+                speed.textContent = `${(val * 4.2).toFixed(1)} Petabytes/s`;
+                cohere.textContent = `${(100 - val * 0.4).toFixed(1)}%`;
+                grav.textContent = `${(1 - (val - 40) * 0.005).toFixed(2)}G`;
+            } else {
+                offset.textContent = `-${(val - 79).toFixed(1)} Days (Pre-cognitive)`;
+                speed.textContent = "INFINITE (Tachyon saturation)";
+                cohere.textContent = "⚠️ UNSTABLE (12.4%)";
+                grav.textContent = "⚠️ 0.12G (Warning)";
+            }
+        }
+        
+        // initialize stats
+        updateCoreStats(10);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0a813390afe1c78',t:'MTc4MTI1OTEyNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
